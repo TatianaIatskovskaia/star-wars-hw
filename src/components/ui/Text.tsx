@@ -7,7 +7,7 @@ interface Props {
 
 const Text = ({children, className}: Props) => {
     return (
-        <div className={`text-3xl text-justify tracking-widest leading-normal ${className} ?? ''`}>
+        <div className={`text-3xl text-justify tracking-widest leading-normal ${className ?? ''}`}>
             {children}
         </div>
     );
