@@ -9,6 +9,7 @@ import friend7 from '../assets/friend7.jpg'
 import friend8 from '../assets/friend8.jpg'
 import friend9 from '../assets/friend9.jpg'
 
+
 export const base_url = `https://sw-info-api.herokuapp.com`
 export const version = '/v1';
 export const characters = {
