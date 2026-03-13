@@ -8,10 +8,11 @@ import friend6 from '../assets/friend6.jpg'
 import friend7 from '../assets/friend7.jpg'
 import friend8 from '../assets/friend8.jpg'
 import friend9 from '../assets/friend9.jpg'
+import type {Characters} from "./type";
 
 export const base_url = `https://sw-info-api.herokuapp.com`
 export const version = '/v1';
-export const characters = {
+export const characters: Characters = {
     luke: {
         name: "Luke Skywalker",
         img: friend0,
