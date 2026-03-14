@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage.tsx";
 
 const AboutMe = () => {
     const {heroId = defaultHero} = useParams();
+
     const [hero, setHero] = useState(() => {
         const hero = JSON.parse(localStorage.getItem(heroId)!);
         if (hero && ((Date.now() - hero.timestamp) < period_month)) {
