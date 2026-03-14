@@ -4,10 +4,10 @@ import {useContext} from "react";
 import {SWContext} from "../utils/context.ts";
 
 const NavItem = ({itemTitle}: { itemTitle: string }) => {
-    const {name} = useContext(SWContext);
+    const {hero} = useContext(SWContext);
 
     return (
-        <NavLink to ={`/${itemTitle.toLowerCase()}/${name}`}>
+        <NavLink to ={`/${itemTitle.toLowerCase()}/${hero}`}>
             <Button>{itemTitle}</Button>
         </NavLink>
     )
