@@ -1,9 +1,14 @@
+import {characters} from "../utils/constants.ts";
+import {NavLink} from "react-router";
+
+
 interface Props {
     friend: string;
     pos: number;
 }
 
 const Friend = ({friend, pos}: Props) => {
+
     let styles = "w-full";
     if (pos === 9) {
         styles += " rounded-br-3xl";
@@ -12,7 +17,9 @@ const Friend = ({friend, pos}: Props) => {
         styles += " rounded-bl-3xl";
     }
     return (
-        <img className={styles} src={friend} alt="Friend"/>
+        <NavLink to={`/home/${friend}`}>
+            <img className={styles} src={characters[friend].img} alt={characters[friend].name}/>
+        </NavLink>
     )
 }
 
