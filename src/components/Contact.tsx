@@ -1,12 +1,10 @@
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {base_url, characters, defaultHero, period_month} from "../utils/constants.ts";
 import {useParams} from "react-router";
-import {SWContext} from "../utils/context.ts";
 import ErrorPage from "./ErrorPage.tsx";
 
 const Contact = () => {
     const {heroId = defaultHero} = useParams();
-    const {changeHero} = useContext(SWContext);
 
     const [planets, setPlanets] = useState<string[]>(() => {
         const planets = JSON.parse(localStorage.getItem('planets')!);
@@ -16,13 +14,6 @@ const Contact = () => {
             return ['wait...']
         }
     });
-
-    useEffect(() => {
-        if (!(heroId in characters)) {
-            return
-        }
-        changeHero(heroId);
-    }, []);
 
     useEffect(() => {
         const getPlanets = async () => {

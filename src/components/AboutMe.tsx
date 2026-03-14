@@ -1,11 +1,9 @@
 import {characters, defaultHero, period_month} from "../utils/constants.ts";
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import ErrorPage from "./ErrorPage.tsx";
-import {SWContext} from "../utils/context.ts";
 
 const AboutMe = () => {
-    const {changeHero} = useContext(SWContext);
     const {heroId = defaultHero} = useParams();
     const [hero, setHero] = useState(() => {
         const hero = JSON.parse(localStorage.getItem(heroId)!);
@@ -15,11 +13,6 @@ const AboutMe = () => {
     });
 
     useEffect(() => {
-        if (!(heroId in characters)) {
-            return
-        }
-        changeHero(heroId);
-
         if (!hero) {
             fetch(`${characters[heroId].url}`)
                 .then(response => response.json())
@@ -35,13 +28,15 @@ const AboutMe = () => {
                         eye_color: data.eye_color
                     }
                     setHero(info);
-                    localStorage.setItem("hero", JSON.stringify({
+                    localStorage.setItem(heroId, JSON.stringify({
                         payload: info,
                         timestamp: Date.now()
                     }));
                 })
         }
     }, [heroId])
+
+    console.log(useParams());
 
     return (heroId in characters) ? (
         <>

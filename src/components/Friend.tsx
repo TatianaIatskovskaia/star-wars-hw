@@ -1,4 +1,4 @@
-import {characters} from "../utils/constants.ts";
+import {characters, navItems} from "../utils/constants.ts";
 import {NavLink} from "react-router";
 
 
@@ -17,7 +17,7 @@ const Friend = ({friend, pos}: Props) => {
         styles += " rounded-bl-3xl";
     }
     return (
-        <NavLink to={`/home/${friend}`}>
+        <NavLink to={`/${navItems[0].toLowerCase()}/${friend}`}>
             <img className={styles} src={characters[friend].img} alt={characters[friend].name}/>
         </NavLink>
     )
