@@ -4,14 +4,14 @@ import {useLocation} from "react-router";
 import {characters, defaultHero} from "../utils/constants.ts";
 
 const HeroManager = () => {
-    const {changeHero} = useContext(SWContext);
+    const {changeName} = useContext(SWContext);
     const {pathname} = useLocation();
 
     useEffect(() => {
         const segments = pathname.split('/');
         const heroId = segments.find(segment => segment in characters) || defaultHero;
-        changeHero(heroId);
-    }, [pathname, changeHero]);
+        changeName(heroId);
+    }, [pathname, changeName]);
     return null;
 };
 

@@ -7,11 +7,11 @@ import HeroManager from "./components/HeroManager.tsx";
 import {useState} from "react";
 
 function App() {
-    const [hero, setHero] = useState(defaultHero);
+    const [name, setName] = useState(defaultHero);
 
     return (
         <div className={'mx-2'}>
-            <SWContext value={{hero, changeHero: setHero}}>
+            <SWContext value={{name, changeName: setName}}>
                 <Header/>
                 <HeroManager/>
                 <Main/>
