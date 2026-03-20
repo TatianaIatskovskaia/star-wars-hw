@@ -1,12 +1,12 @@
-import {characters, defaultHero, starWarsInfo} from "../utils/constants.ts";
+import {starWarsInfo} from "../utils/constants.ts";
 import Text from "./ui/Text.tsx";
-import {useParams} from "react-router";
 import ErrorPage from "./ErrorPage.tsx";
+import {useValidHero} from "../hooks/customHook.ts";
 
 const StarWars = () => {
-    const {heroId = defaultHero} = useParams();
+    const {isHeroValid} = useValidHero();
 
-    return (heroId in characters) ? (
+    return isHeroValid ? (
         <Text>
             {starWarsInfo}
         </Text>

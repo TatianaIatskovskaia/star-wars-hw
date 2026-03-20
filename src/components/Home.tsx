@@ -1,14 +1,13 @@
 import OpeningCrawl from "./OpeningCrawl.tsx";
 import Hero from "./Hero.tsx";
 import DreamTeam from "./DreamTeam.tsx";
-import {useParams} from "react-router";
-import {characters, defaultHero} from "../utils/constants.ts";
 import ErrorPage from "./ErrorPage.tsx";
+import {useValidHero} from "../hooks/customHook.ts";
 
 const Home = () => {
-    const {heroId = defaultHero} = useParams();
+    const {isHeroValid} = useValidHero();
 
-    return (heroId in characters) ? (
+    return isHeroValid ? (
         <main>
             <Hero/>
             <DreamTeam/>

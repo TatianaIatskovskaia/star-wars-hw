@@ -1,10 +1,11 @@
-import {characters, defaultHero, period_month} from "../utils/constants.ts";
+import {characters, period_month} from "../utils/constants.ts";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import ErrorPage from "./ErrorPage.tsx";
+import {useValidHero} from "../hooks/customHook.ts";
 
 const AboutMe = () => {
-    const {heroId = defaultHero} = useParams();
+    const {isHeroValid, heroId} = useValidHero();
 
     const [hero, setHero] = useState(() => {
         const hero = JSON.parse(localStorage.getItem(heroId)!);
@@ -14,7 +15,7 @@ const AboutMe = () => {
     });
 
     useEffect(() => {
-        if (!hero) {
+        if (!hero && isHeroValid) {
             fetch(`${characters[heroId].url}`)
                 .then(response => response.json())
                 .then(data => {
@@ -39,7 +40,7 @@ const AboutMe = () => {
 
     console.log(useParams());
 
-    return (heroId in characters) ? (
+    return isHeroValid ? (
         <>
             {(!!hero) &&
                 <div className={'text-3xl text-justify tracking-widest leading-14 ml-8'}>
